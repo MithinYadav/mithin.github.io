@@ -1,0 +1,19 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 1. Load academic data 
+df = pd.read_csv('student_scores.csv')
+
+# 2. Identify Performance Patterns 
+# Grouping students by study hours to see the average score
+performance_trends = df.groupby('Study_Hours')['Test_Score'].mean()
+
+# 3. Designing Visual Reports 
+plt.figure(figsize=(10,6))
+performance_trends.plot(kind='line', marker='o', color='teal')
+plt.title('Correlation: Study Hours vs Test Scores')
+plt.xlabel('Hours Studied')
+plt.ylabel('Average Score')
+plt.grid(True)
+plt.savefig('performance_report.png') # Saves the visual report 
+plt.show()
